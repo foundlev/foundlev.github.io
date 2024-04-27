@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333131;
+}
+
+a {
+    color: black;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.main {
+    margin: auto;
+    width: 47.5rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.content__hello {
+    display: flex;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    font-size: 28px;
+    line-height: 2.8rem;
+}
+
+.content__hello-img {
+    width: 142px;
+    height: 142px;
+    min-width: 142px;
+    border-radius: 50%;
+    border: 3px solid silver;
+}
+
+.content__hello-text {
+    margin-left: 2.2rem;
+    line-height: 2.7rem;
+    margin-top: 5px;
+}
+
+.content__name a {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.content__description {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.header {
+    display: flex;
+    justify-content: end;
+    margin-top: 0.2rem;
+}
+.header span {
+    margin-left: 3px;
+}
+
+.content__skills {
+    display: flex;
+    max-width: 11rem;
+    font-size: 18px;
+    padding-top: 15px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    flex: 1 1 0%;
+    -webkit-box-pack: start;
+    justify-content: space-between;
+}
+.content__skills-item {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.content__skills-item img {
+    width: 33px;
+    height: 33px;
+    margin-right: 4px;
+}
+
+.content__social {
+    display: flex;
+    max-width: 36rem;
+    font-size: 18px;
+    padding-top: 0px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    flex: 1 1 0%;
+    -webkit-box-pack: start;
+    justify-content: space-between;
+}
+.content__social-item {
+    display: flex;
+    align-items: center;
+}
+.content__social-item img {
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+}
+
+.content__about-header {
+    font-size: 2.4rem;
+    margin-bottom: 1.4rem;
+    line-height: 4rem;
+    text-transform: uppercase;
+}
+
+.education {
+    display: flex;
+    align-items: center; /* Центрируем элементы по вертикали */
+    flex-wrap: wrap; /* Позволяем элементам переноситься на следующую строку при необходимости */
+}
+
+.content__education-icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+    width: 34px; /* Устанавливаем желаемый размер для иконки */
+}
+
+.content__education-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание содержимого текста по левому краю относительно иконки */
+}
+
+.certificate-link:hover {
+    text-decoration: underline;
+}
+
+
+.content__education-text {
+    display: block;
+    margin-bottom: 0;
+    margin: 0; /* Убираем внешние отступы */
+    font-size: 1.05rem; /* Указываем размер шрифта */
+}
+
+/* Дополнительный класс для обеспечения переноса элемента на новую строку, если это необходимо */
+.flex-item-new-line {
+    flex-basis: 100%; /* Заставляем элемент занимать полную ширину, заставляя его переноситься на новую строку */
+    order: 2; /* Устанавливаем порядок, если нужно поместить элемент после других элементов в контейнере */
+}
+
+.icon-inline {
+    vertical-align: text-bottom; /* Adjusts the icon's position relative to the text */
+    margin-right: 4px; /* Reduces space to the right of the icon, if necessary */
+    width: 28px; /* Фиксированный размер иконки */
+    vertical-align: bottom; /* Меняем на bottom, чтобы поднять иконку */
+}
+
+.content__subheader {
+    font-size: 1.4rem;
+    line-height: 4rem;
+    text-transform: uppercase;
+}
+
+.content__main-item {
+    display: flex;
+    line-height: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+}
+
+.content__main-item.project img {
+    max-width: 300px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+
+.project-one-image {
+    margin-bottom: -1rem;
+}
+
+.main-item__description img {
+    border-radius: 25px;
+}
+
+.project .main-item__title {
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.project .main-item__links span {
+    margin-right: 4px;
+    font-size: 1.07rem;
+}
+
+.link-text {
+    margin-left: -0.2rem; /* Добавляем отступ слева, если необходимо */
+    /* Другие стили для текста */
+}
+
+.certificate-link, .content__education-text-wrapper > div > span {
+    font-size: 0.8rem;
+    color: gray;
+    text-decoration: none;
+}
+
+.certificate-link:hover {
+    text-decoration: underline; /* Подчеркивание при наведении для удобства пользователя */
+}
+
+
+.project .main-item__description {
+    font-weight: 100;
+    margin-top: 1rem;
+}
+
+.project .main-item__subdescription {
+    font-weight: 200;
+    margin-top: 1rem;
+}
+.project .main-item__subdescription span {
+    font-weight: 400;
+}
+
+.main-item__title{
+    margin-top: 1rem;
+}
+
+.main-item__features {
+    font-size: 0.8rem; /* Adjust size as needed */
+    color: #666; /* Light grey color */
+    margin-bottom: 0.5rem; /* Space before the links */
+}
+
+.feature-box {
+    display: inline-block;
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 0.2rem 0.5rem; /* Padding inside the boxes */
+    margin-right: 0.5rem; /* Space between the boxes */
+    margin-bottom: 0.5rem; /* If boxes wrap, space between lines */
+}
+
+
+.feature-box-approval {
+    background-color: #d0e0f0;
+    color: #333; /* Цвет шрифта */
+}
+
+
+.feature-box-deny {
+    background-color: #CD5C5C;
+    color: #F0F0F0; /* Цвет шрифта */
+}
+
+
+.feature-box-scientific-work {
+    background-color: #FFDAB9;
+    color: #333;
+}
+
+.project-images a {
+    display: block; /* Заставляет ссылки с картинками располагаться друг под другом */
+}
+
+.project-images {
+    margin-bottom: 2.3rem;
+}
+
+
+/* Ensure that the feature boxes wrap if there isn't enough space */
+.main-item__subdescription {
+    flex-wrap: wrap;
+}
+
+
+#myBtn {
+  display: none; /* Скрыть кнопку */
+  position: fixed; /* Фиксированное положение */
+  bottom: 20px; /* Расположение в 20px от нижнего края */
+  right: 30px; /* Расположение в 30px от правого края */
+  z-index: 99; /* Убедитесь, что кнопка находится над другими элементами */
+  border: none; /* Убрать границы */
+  outline: none; /* Убрать контур */
+  background-color: #555; /* Серый фон */
+  color: white; /* Белый текст */
+  cursor: pointer; /* Курсор в виде указателя */
+  padding: 15px; /* Внутренние отступы */
+  border-radius: 10px; /* Скругленные углы */
+}
+
+#myBtn:hover {
+  background-color: #777777; /* Синий цвет при наведении */
+}
+
+
+
+.post .main-item__title{
+    font-size: 1.48rem;
+    line-height: 2rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+}
+
+.post .main-item__title a{
+    box-shadow: none;
+    letter-spacing: 0.03em;
+}
+
+.post .main-item__date {
+    display: inline-block;
+    font-size: .94rem;
+    font-weight: 700;
+    line-height: 1.55rem;
+}
+
+.post .main-item__description {
+    line-height: 1.8rem;
+    margin-top: -0.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__social-item img {
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+}
+
+/* Стиль модального окна */
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Оставаться на месте при прокрутке */
+  z-index: 1000; /* Сидеть поверх всего */
+  padding-top: 100px; /* Расположение от верха */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Возможность прокрутки */
+  background-color: rgb(0,0,0); /* Черный фон */
+  background-color: rgba(0,0,0,0.9); /* Черный с небольшой прозрачностью */
+}
+
+/* Стиль видео внутри модального окна */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%; /* Или другой нужный размер */
+  max-width: 700px;
+}
+
+/* Кнопка закрытия */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: #c8cbcd;
+    }
+
+    a, span, .bold {
+        color: #dcdcdc;
+    }
+
+    img {
+        filter: brightness(70%);
+    }
+
+    .feature-box {
+        background-color: #333; /* Более темный фон для темной темы */
+        color: #ccc; /* Светлый текст для контраста на темном фоне */
+    }
+
+    .feature-box-approval {
+        background-color: #2c3e50; /* Темно-синий */
+        color: #ecf0f1; /* Светло-серый */
+    }
+
+    .feature-box-deny {
+        background-color: #992d22; /* Темно-красный */
+        color: #ecf0f1; /* Светло-серый */
+    }
+
+    .feature-box-scientific-work {
+        background-color: #8c7a6b; /* Темный коричневый */
+        color: #f0e5d8; /* Светлый кремовый */
+    }
+
+}
